@@ -1,0 +1,36 @@
+INTRODUCTION ABOUT THE PROJECT : The dataset is a sentiment analysis classification of fake and real news ,given a set of headings like text,title,subject,date . 
+the data has 2 csv data files. one for true and one for fake news.The notebook gives a python solution to identify fake and real news of a large data(set) with highest possible accuracy .
+the vocabulary of the dataset is over 150000 words, which is tried to reduce by using stop words and stemmer functions down to 130000 .
+
+PROCEDURE/APPROACH :(STEMMING AND STOP WORDS,LABEL ENCODED WORD EMBEDDINGS,)
+
+* the data has 2 csv data files. one for true and one for fake news
+* we save them them seperately into two seperate dataframes. and add a column "category" with values '0' for fake and '1' for true and concatenate both to df
+*some visualisations are made to understand the dataset better and it is observed tht the data is evenly distributed between true and false.
+
+*Create a function clean_word that replaces punctuation with blank spaces, and appends only numbers and alphabets to 'new', excluding stopwords, and perform stemming and append the words to'new'.
+*add all the columns to 'text' and drop the unnecessary columns
+*find the largest sentence and pad rest of the sentences with zeros to match the largest sentence's length
+*feed it into a vector which can be trained and tested for a model
+
+* the vector is fed into the the model split into 80:20 train and test .
+*the train and test dataset is split into batches with tensor slices and well shuffled 
+* the  model is created using sequential , embedding,global average pooling , relu and sigmoid for activation and output layers.
+*the model is compiled using adam and cross entropy 
+*the model is fit, for five epochs 
+* accuracy and error plots are drawn to visualise the model fitting
+*confusion matrix is calculated and a heatmap is also made for concluding the success/faailure of the model
+
+
+CONCLUSION : The model was tested with 8980 cases and gave a result of 9842% and 97.817% result
+Out of 4663 fake news ourmodel predicted 4524 as fake and 139 as true i.e our model gives 2.98% false positive ie 2.98% of the times out model predicted true when the answer was false
+Out if 4317 true value our model predicted 4260 as true and 57 as false i.e our model gives 1.32% truenegative result ie 1.32% of the time our model predicts fake when the answer is true
+
+Train accuracy :0.9842
+Test accuracy: 0.9782
+
+Train error:0.0721
+Test error:0.0814
+
+no over fitting or under fitting observed
+
